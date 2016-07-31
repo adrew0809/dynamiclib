@@ -15,7 +15,8 @@ b.o : b.cpp b.h Interface.h
 
 a.o : a.cpp a.h Interface.h
 
-main.o : main.cpp Interface.h DynamicLib.h
+main.o : CPPFLAGS += -I../include
+main.o : main.cpp Interface.h ../include/DynamicLib.h
 
 %.so :
 	$(CXX) -dynamiclib -flat_namespace -o $@ $^
