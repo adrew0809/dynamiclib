@@ -15,7 +15,7 @@ b.o : b.cpp b.h Interface.h
 
 a.o : a.cpp a.h Interface.h
 
-main.o : main.cpp Interface.h DL.h
+main.o : main.cpp Interface.h DynamicLib.h
 
 %.so :
 	$(CXX) -dynamiclib -flat_namespace -o $@ $^

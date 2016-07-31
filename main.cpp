@@ -1,4 +1,4 @@
-#include "DL.h"
+#include "DynamicLib.h"
 #include "Interface.h"
 
 
@@ -7,7 +7,7 @@ int main(int argc, const char* argv[])
   using std::cout;
   cout << "Starting program...\n";
   try {
-    const auto dl = DL("interface.so");
+    const auto dl = DynamicLib("interface.so");
     const auto obj = dl.create<Interface>();
     cout << "obj says " << obj->talk() << "\n";
     const auto clone = obj->clone();

@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <utility>
 
-class DL
+class DynamicLib
 {
 private:
   template<class T>
@@ -16,7 +16,7 @@ private:
   using DestroyFunction = void (*)(T*);
 
 public:
-  explicit DL(const std::string& path) : handle_(nullptr)
+  explicit DynamicLib(const std::string& path) : handle_(nullptr)
   {
     handle_ = dlopen(path.c_str(), RTLD_LAZY);
     std::cout << "Dl ctor\n";
@@ -25,23 +25,23 @@ public:
     }
   }
 
-  DL(const DL&) = delete;
-  DL& operator=(const DL&) = delete;
+  DynamicLib(const DynamicLib&) = delete;
+  DynamicLib& operator=(const DynamicLib&) = delete;
 
-  DL(DL&& that) : handle_(nullptr)
+  DynamicLib(DynamicLib&& that) : handle_(nullptr)
   {
     std::cout << "Dl move ctor\n";
     swap(*this, that);
   }
 
-  DL& operator=(DL&& that)
+  DynamicLib& operator=(DynamicLib&& that)
   {
     std::cout << "Dl move assignment\n";
     swap(*this, that);
     return *this;
   }
 
-  ~DL() noexcept
+  ~DynamicLib() noexcept
   {
     std::cout << "Dl dtor\n";
     if (handle_) {
@@ -49,7 +49,7 @@ public:
     }
   }
 
-  friend void swap(DL& left, DL& right) noexcept
+  friend void swap(DynamicLib& left, DynamicLib& right) noexcept
   {
     using std::swap;
     swap(left.handle_, right.handle_);
