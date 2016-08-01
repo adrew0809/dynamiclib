@@ -20,21 +20,21 @@ use either the `A` or the `B` implementation.
 
 Example run:
 
- cd example
- make
- ln -s interface_a.so interface.so
- ./main
- Starting program...
- Dl ctor
- Interface's ctor
- A's ctor
- obj says "I'm an A!"
- Interface's ctor
- A's ctor
- clone says "I'm an A!"
- A's dtor
- Interface's dtor
- A's dtor
- Interface's dtor
- Dl dtor
+    cd example
+    make
+    ln -s interface_a.so interface.so
+    ./main
+    Starting program...
+    Dl ctor
+    Interface's ctor
+    A's ctor
+    obj says "I'm an A!"
+    Interface's ctor
+    A's ctor
+    clone says "I'm an A!"
+    A's dtor
+    Interface's dtor
+    A's dtor
+    Interface's dtor
+    Dl dtor
 
