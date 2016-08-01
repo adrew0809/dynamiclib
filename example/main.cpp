@@ -8,7 +8,7 @@ int main(int argc, const char* argv[])
   cout << "Starting program...\n";
   try {
     const auto dl = DynamicLib("interface.so");
-    const auto obj = dl.create<Interface>();
+    const auto obj = dl.create<Interface>(Interface::createFunctionName(), Interface::destroyFunctionName());
     cout << "obj says " << obj->talk() << "\n";
     const auto clone = obj->clone();
     cout << "clone says " << clone->talk() << "\n";

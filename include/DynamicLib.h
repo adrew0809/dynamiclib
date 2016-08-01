@@ -57,8 +57,8 @@ public:
 
   template<class T>
   std::unique_ptr<T,DestroyFunction<T>> create(
-    const std::string& createName = T::createFunctionName(),
-    const std::string& destroyName = T::destroyFunctionName()) const
+    const std::string& createName,
+    const std::string& destroyName) const
   {
     if (handle_ == nullptr) {
       throw std::runtime_error("DL object does not own a valid handle.");
