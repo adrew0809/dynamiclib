@@ -1,5 +1,5 @@
-#ifndef DL_H_
-#define DL_H_
+#ifndef DYNAMICLIB_H_
+#define DYNAMICLIB_H_
 
 #include <dlfcn.h>
 
