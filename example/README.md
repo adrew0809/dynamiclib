@@ -20,21 +20,30 @@ use either the `A` or the `B` implementation.
 
 Example run:
 
-    cd example
-    make
-    ln -s interface_a.so interface.so
-    ./main
+    $cd example
+    $make
+    c++ -std=c++11 -I../include -c -o main.o main.cpp
+    c++  -o main main.o  
+    c++ -std=c++11  -c -o a.o a.cpp
+    c++ -dynamiclib -flat_namespace -o interface_a.so a.o
+    c++ -std=c++11  -c -o b.o b.cpp
+    c++ -dynamiclib -flat_namespace -o interface_b.so b.o
+    $ln -s interface_a.so interface.so
+    $./main
     Starting program...
-    Dl ctor
-    Interface's ctor
     A's ctor
     obj says "I'm an A!"
-    Interface's ctor
     A's ctor
     clone says "I'm an A!"
     A's dtor
-    Interface's dtor
     A's dtor
-    Interface's dtor
-    Dl dtor
+    $ln -sf interface_b.so interface.so 
+    $./main 
+    Starting program...
+    B's ctor
+    obj says "I'm an B :)"
+    B's ctor
+    clone says "I'm an B :)"
+    B's dtor
+    B's dtor
 

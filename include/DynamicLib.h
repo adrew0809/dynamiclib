@@ -3,8 +3,9 @@
 
 #include <dlfcn.h>
 
-#include <iostream>
+#include <memory>
 #include <stdexcept>
+#include <string>
 #include <utility>
 
 class DynamicLib
@@ -19,7 +20,6 @@ public:
   explicit DynamicLib(const std::string& path) : handle_(nullptr)
   {
     handle_ = dlopen(path.c_str(), RTLD_LAZY);
-    std::cout << "Dl ctor\n";
     if (handle_ == nullptr) {
       throw std::runtime_error(dlerror());
     }
@@ -30,20 +30,17 @@ public:
 
   DynamicLib(DynamicLib&& that) : handle_(nullptr)
   {
-    std::cout << "Dl move ctor\n";
     swap(*this, that);
   }
 
   DynamicLib& operator=(DynamicLib&& that)
   {
-    std::cout << "Dl move assignment\n";
     swap(*this, that);
     return *this;
   }
 
   ~DynamicLib() noexcept
   {
-    std::cout << "Dl dtor\n";
     if (handle_) {
       dlclose(handle_);
     }

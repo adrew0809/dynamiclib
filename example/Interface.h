@@ -1,15 +1,14 @@
 #ifndef INTERFACE_H_
 #define INTERFACE_H_
 
-#include <iostream>
 #include <memory>
 #include <string>
 
 class Interface 
 {
 public:
-  Interface() { std::cout << "Interface's ctor\n"; }
-  virtual ~Interface() { std::cout << "Interface's dtor\n"; }
+  Interface() {}
+  virtual ~Interface() {}
   virtual std::string talk() const = 0;
 
   virtual std::unique_ptr<Interface> clone() const = 0;

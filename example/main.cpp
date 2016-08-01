@@ -1,6 +1,7 @@
+#include <iostream>
+
 #include "DynamicLib.h"
 #include "Interface.h"
-
 
 int main(int argc, const char* argv[])
 {
